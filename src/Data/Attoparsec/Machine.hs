@@ -32,6 +32,7 @@ import qualified Data.Text as T
 -- >>> import Data.Attoparsec.ByteString
 -- >>> import Data.Attoparsec.ByteString.Char8
 -- >>> :set -XOverloadedStrings
+-- >>> :set -XNoMonomorphismRestriction
 
 
 -- | @'AI.Parser' -> 'Process'@ conversion.
