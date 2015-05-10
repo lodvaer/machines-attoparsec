@@ -19,6 +19,7 @@ module Data.Attoparsec.Machine
     ) where
 
 import Prelude.Compat
+
 import qualified Data.Attoparsec.ByteString as AB
 import qualified Data.Attoparsec.Internal.Types as AI
 import qualified Data.Attoparsec.Text as AT

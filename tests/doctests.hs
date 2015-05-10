@@ -1,4 +1,7 @@
+{-# LANGUAGE NoImplicitPrelude #-}
 import Test.DocTest
+
+import Prelude.Compat
 
 import Data.CaseInsensitive (mk)
 import Data.List (isSuffixOf)
