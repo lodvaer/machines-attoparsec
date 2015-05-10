@@ -54,16 +54,18 @@ class ParserAutomaton i where
     -- | Treats the input stream like packets and produces only a single parse
     -- result per upstream 'Yield'.
     --
-    -- When there are leftovers in the current packet after the parse is done
-    -- they are dropped.
+    -- When there are leftovers in the current packet after the parse is done,
+    -- they are dropped. Include it in your parse result if you want it.
     --
     -- Examples:
     --
-    -- >>> let input = supply ["hello", "", "world"]
+    -- >>> let input = supply ["hello", "", "world", "!"]
     -- >>> runT . input $ autoPacketParser anyChar
-    -- [Success 'h',Fail [] "not enough input",Success 'w']
-    -- >>> runT . input $ autoPacketParser (many anyChar)
-    -- [Success "hello",Success "",Success "world"]
+    -- [Success 'h',Fail [] "not enough input",Success 'w',Success '!']
+    -- >>> runT . input $ autoPacketParser ((,) <$> anyChar <*> takeByteString)
+    -- [Success ('h',"ello"),Fail [] "not enough input",Success ('w',"orld"),Success ('!',"")]
+    -- >>> runT . input $ autoPacketParser takeByteString
+    -- [Success "hello",Success "",Success "world",Success "!"]
     --
     autoPacketParser :: Monad m
                      => AI.Parser i a
