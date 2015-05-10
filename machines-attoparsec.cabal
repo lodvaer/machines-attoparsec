@@ -19,7 +19,7 @@ source-repository head
 library
   exposed-modules:   Data.Attoparsec.Machine
 
-  build-depends:     base >=4.3
+  build-depends:     base >=4.3 && <5
                    , base-compat >=0.8.0
                    , machines >=0.4 && <0.6
                    , attoparsec ==0.12.*
